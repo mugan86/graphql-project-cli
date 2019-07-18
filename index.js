@@ -32,6 +32,21 @@ const QUESTIONS = [
             }
             return 'El nombre del proyecto solo puede tener 214 carácteres y tiene que empezar en minúsculas o con una arroba';
         }
+    },
+    {
+        name: 'github',
+        type: 'input',
+        message: 'Usuario Github'
+    },
+    {
+        name: 'author',
+        type: 'input',
+        message: 'Desarrolador - Nombre y Apellidos'
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: 'Desarrollador - Email'
     }
 ];
 
@@ -40,12 +55,15 @@ const DIR_ACTUAL = process.cwd();
 inquirer.prompt(QUESTIONS).then(respuestas => {
     const template = respuestas['template'];
     const proyecto = respuestas['proyecto'];
+    const github = respuestas['github'];
+    const author = respuestas['author'];
+    const email = respuestas['email'];
 
     const templatePath = path.join(__dirname, 'templates', template);
     const pathTarget = path.join(DIR_ACTUAL, proyecto);
     if (!createProject(pathTarget)) return;
 
-    createDirectoriesFilesContent(templatePath, proyecto);
+    createDirectoriesFilesContent(templatePath, proyecto, github, author, email);
 
     postProccess(templatePath, pathTarget);
 });
@@ -60,7 +78,7 @@ function createProject(projectPath) {
     return true;
 }
 
-function createDirectoriesFilesContent(templatePath, projectName) {
+function createDirectoriesFilesContent(templatePath, projectName, githubUser, authorNameLastname, emailValue) {
     const listFileDirectories = fs.readdirSync(templatePath);
 
     listFileDirectories.forEach( item => {
@@ -72,12 +90,12 @@ function createDirectoriesFilesContent(templatePath, projectName) {
 
         if (stats.isFile() ) {
             let contents = fs.readFileSync(originalPath, 'utf-8');
-            contents = render(contents, {projectName});
+            contents = render(contents, {projectName, githubUser, authorNameLastname, emailValue});
             fs.writeFileSync(writePath, contents, 'utf-8');
             // Información adicional
             const CREATE = chalk.green('CREATE ');
             const size = stats['size'];
-            console.log(`${CREATE} ${originalPath} (${size} bytes)`);
+            console.log(`${CREATE} ${writePath} (${size} bytes)`);
         } else if (stats.isDirectory() ) {
             fs.mkdirSync(writePath);
             createDirectoriesFilesContent(path.join(templatePath, item), path.join(projectName, item));

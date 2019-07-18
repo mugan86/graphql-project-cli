@@ -1,5 +1,5 @@
 {
-  "name": "00-hello-world-graphql",
+  "name": "<%= projectName %>",
   "version": "1.0.0",
   "description": "Hello world in GraphQL for first steps",
   "main": "build/server.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/graphql-course/00-hello-world-graphql.git"
+    "url": "git+https://github.com/<%= githubUser %>/<%= projectName %>.git"
   },
   "keywords": [],
-  "author": "Anartz Mugika Ledo <mugan86@gmail.com>",
+  "author": "<%= authorNameLastname %> <<%= emailValue %>>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/graphql-course/00-hello-world-graphql/issues"
+    "url": "https://github.com/<%= githubUser %>/<%= projectName %>/issues"
   },
-  "homepage": "https://github.com/graphql-course/00-hello-world-graphql#readme",
+  "homepage": "https://github.com/<%= githubUser %>/<%= projectName %>#readme",
   "engines": {
     "node": "10.5.3"
   },

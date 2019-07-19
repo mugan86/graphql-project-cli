@@ -7,7 +7,11 @@
     "start": "node build/server.js",
     "build": "tsc -p . && ncp src/schema build/schema",
     "start:dev": "npm run build:dev",
-    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql"
+    "build:dev": "nodemon \"src/server.ts\" --exec \"ts-node\" src-server.ts -e ts,graphql,json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<%= githubUser %>/<%= projectName %>.git"
   },
   "keywords": [
     "graphql",
@@ -15,8 +19,15 @@
     "jwt",
     "mongodb"
   ],
-  "author": "Anartz Mugika Ledo <mugan86@gmail.com>",
+  "author": "<%= authorNameLastname %> <<%= emailValue %>>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/<%= githubUser %>/<%= projectName %>/issues"
+  },
+  "homepage": "https://github.com/<%= githubUser %>/<%= projectName %>#readme",
+  "engines": {
+    "node": "10.16.0"
+  },
   "dependencies": {
     "apollo-server-express": "^2.6.7",
     "bcryptjs": "^2.4.3",

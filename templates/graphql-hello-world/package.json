@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/<%= githubUser %>/<%= projectName %>#readme",
   "engines": {
-    "node": "10.5.3"
+    "node": "10.16.0"
   },
   "dependencies": {
     "apollo-server-express": "^2.6.1",

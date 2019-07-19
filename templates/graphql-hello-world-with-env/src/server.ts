@@ -27,10 +27,10 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
-app.use('/', (req, res) => {
+app.use('/', (req: any, res: any) => {
     res.send('Bienvenido a la API de Saludo!!');
 });
-
+const PORT = process.env.PORT | 5000;
 const httpServer = createServer(app);
 
-httpServer.listen({ port: process.env.PORT }, () : void => console.log(`http://localhost:${process.env.PORT}/graphql`));
+httpServer.listen({ port:  PORT }, () : void => console.log(`http://localhost:${ PORT }/graphql`));

@@ -30,7 +30,7 @@ server.applyMiddleware({ app });
 app.use('/', (req: any, res: any) => {
     res.send('Bienvenido a la API de Saludo!!');
 });
-const PORT = process.env.PORT | 5000;
+const PORT = process.env.PORT || 5000;
 const httpServer = createServer(app);
 
 httpServer.listen({ port:  PORT }, () : void => console.log(`http://localhost:${ PORT }/graphql`));

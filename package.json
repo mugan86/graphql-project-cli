@@ -1,24 +1,24 @@
 {
   "name": "@mugan86/graphql-projects-cli",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.2.0",
+  "description": "Different GraphQL Projects CLI Generator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/npm-js-ts-angular-modules-course/extra-node-cli-project-generator.git"
+    "url": "git+https://github.com/mugan86/graphql-project-cli.git"
   },
-  "author": "Anartz Mugika <mugan86@gmail.com>",
+  "author": "Anartz Mugika Ledo<mugan86@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/npm-js-ts-angular-modules-course/extra-node-cli-project-generator/issues"
+    "url": "https://github.com/mugan86/graphql-project-cli/issues"
   },
   "bin": {
     "graphql-anartz": "./index.js"
   },
-  "homepage": "https://github.com/npm-js-ts-angular-modules-course/extra-node-cli-project-generator#readme",
+  "homepage": "https://github.com/mugan86/graphql-project-cli#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "ejs": "^2.6.1",

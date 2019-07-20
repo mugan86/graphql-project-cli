@@ -62,8 +62,13 @@ inquirer.prompt(QUESTIONS).then(respuestas => {
     const templatePath = path.join(__dirname, 'templates', template);
     const pathTarget = path.join(DIR_ACTUAL, proyecto);
     if (!createProject(pathTarget)) return;
+    
+    let nodeVersion = shell.exec('node -v');
+    let nodeString = nodeVersion.stdout;
+    nodeString = nodeString.replace('v', '');
+    nodeString = nodeString.replace('\n', '');
 
-    createDirectoriesFilesContent(templatePath, proyecto, github, author, email);
+    createDirectoriesFilesContent(templatePath, proyecto, github, author, email, nodeString);
 
     postProccess(templatePath, pathTarget);
 });
@@ -78,7 +83,7 @@ function createProject(projectPath) {
     return true;
 }
 
-function createDirectoriesFilesContent(templatePath, projectName, githubUser, authorNameLastname, emailValue) {
+function createDirectoriesFilesContent(templatePath, projectName, githubUser, authorNameLastname, emailValue, nodeVersion) {
     const listFileDirectories = fs.readdirSync(templatePath);
 
     listFileDirectories.forEach( item => {
@@ -90,7 +95,7 @@ function createDirectoriesFilesContent(templatePath, projectName, githubUser, au
 
         if (stats.isFile() ) {
             let contents = fs.readFileSync(originalPath, 'utf-8');
-            contents = render(contents, {projectName, githubUser, authorNameLastname, emailValue});
+            contents = render(contents, {projectName, githubUser, authorNameLastname, emailValue, nodeVersion});
             fs.writeFileSync(writePath, contents, 'utf-8');
             // Información adicional
             const CREATE = chalk.green('CREATE ');

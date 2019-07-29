@@ -49,8 +49,6 @@ const QUESTIONS = [
         message: 'Desarrollador - Email'
     }
 ];
-
-// console.log(QUESTIONS);
 const DIR_ACTUAL = process.cwd();
 inquirer.prompt(QUESTIONS).then(respuestas => {
     const template = respuestas['template'];

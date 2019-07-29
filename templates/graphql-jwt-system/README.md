@@ -1,5 +1,8 @@
-# Sistema de login / registro con JWT en GraphQL con MongoDB
+# <%= projectName %>
 
+Introduce el contenido de tu README
+
+...
 En este proyecto vamos a aprender como crear un sistema para registro de usuarios haciendo uso de JWT y con ello vamos a conseguir también el inicio de sesión para obtener el token que nos servirá para autenticarnos en GraphQL.
 
 ## Requerimientos

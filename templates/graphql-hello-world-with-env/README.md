@@ -1,1 +1,3 @@
-# 00-hello-world-graphql
+# <%= projectName %>
+
+Introduce el contenido de tu README

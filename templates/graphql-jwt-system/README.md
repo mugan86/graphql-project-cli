@@ -23,7 +23,7 @@ En este proyecto vamos a aprender como crear un sistema para registro de usuario
 Creamos el fichero .env dentro del directorio "src"
 ```
 PORT=<numero-puerto>
-SECRET=<PALABRA_SECRETA>
+SECRET_KEY=<PALABRA_SECRETA>
 DATABASE=mongodb://localhost:27017/<base-de-datos>
 ```
 

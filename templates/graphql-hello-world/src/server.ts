@@ -2,7 +2,7 @@
 import express from 'express';
 import compression from 'compression';
 import cors from 'cors';
-import schema from './schema/schema';
+import schema from './schema';
 import { ApolloServer } from 'apollo-server-express';
 import { createServer } from 'http';
 import expressPlayGround from 'graphql-playground-middleware-express';
@@ -18,7 +18,7 @@ async function init() {
 
     // Inicializamos el servidor de Apollo
     const server = new ApolloServer({
-        schema: schema,
+        schema,
         introspection: true // Necesario
     });
 

@@ -61,12 +61,9 @@ inquirer.prompt(QUESTIONS).then(respuestas => {
     const pathTarget = path.join(DIR_ACTUAL, proyecto);
     if (!createProject(pathTarget)) return;
     
-    let nodeVersion = shell.exec('node -v');
-    let nodeString = nodeVersion.stdout;
-    nodeString = nodeString.replace('v', '');
-    nodeString = nodeString.replace('\n', '');
+    let nodeVersion = shell.exec('node -v').trim();
 
-    createDirectoriesFilesContent(templatePath, proyecto, github, author, email, nodeString);
+    createDirectoriesFilesContent(templatePath, proyecto, github, author, email, nodeVersion);
 
     postProccess(templatePath, pathTarget);
 });

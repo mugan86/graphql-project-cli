@@ -10,11 +10,8 @@ const query: IResolvers = {
         },
         helloToGraphQLCourse(): string {
             return 'Hello to GraphQL Course!!';
-        },
-        list() {
-            return LIST;
         }
     }
-}
+};
 
 export default query;

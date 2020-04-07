@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 import { IResolvers } from 'graphql-tools';
+=======
+import { IResolvers } from "graphql-tools";
+import { LIST } from "./resolversMap";
+>>>>>>> 6e73835188b71df40780d6fbcb50db66adb09460
 
-// Los resolvers de las operaciones de consulta para devolver información
-const resolvers: IResolvers = {
+const query: IResolvers = {
     Query: {
         hello(): string {
             return 'Hello world!!';
@@ -9,10 +13,13 @@ const resolvers: IResolvers = {
         helloWithName(_: void, args): string {
             return `Hello ${args.name}!!`;
         },
-        helloToGraphQLCourse (): string {
+        helloToGraphQLCourse(): string {
             return 'Hello to GraphQL Course!!';
+        },
+        list() {
+            return LIST;
         }
     }
-};
+}
 
-export default resolvers;
+export default query;

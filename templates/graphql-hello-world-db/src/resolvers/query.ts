@@ -1,4 +1,4 @@
-import { IResolvers } from "graphql-tools";
+import { IResolvers } from 'graphql-tools';
 
 const query: IResolvers = {
     Query: {
@@ -12,6 +12,6 @@ const query: IResolvers = {
             return 'Hello to GraphQL Course!!';
         }
     }
-}
+};
 
 export default query;

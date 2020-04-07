@@ -1,4 +1,4 @@
-import { SECRET_KEY } from "../config/constants";
+import { SECRET_KEY } from '../config/constants';
 import jwt from 'jsonwebtoken';
 class JWT {
     private secretKey = SECRET_KEY as string;

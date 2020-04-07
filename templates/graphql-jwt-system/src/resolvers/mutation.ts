@@ -1,5 +1,5 @@
-import { IResolvers } from "graphql-tools";
-import { Datetime } from "../lib/datetime";
+import { IResolvers } from 'graphql-tools';
+import { Datetime } from '../lib/datetime';
 import bcryptjs from 'bcryptjs';
 const mutation: IResolvers = {
     Mutation: {
@@ -40,6 +40,6 @@ const mutation: IResolvers = {
                 });
         }
     }
-}
+};
 
 export default mutation;

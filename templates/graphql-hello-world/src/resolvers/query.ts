@@ -1,4 +1,4 @@
-import { IResolvers } from "graphql-tools";
+import { IResolvers } from 'graphql-tools';
 
 // Los resolvers de las operaciones de consulta para devolver información
 const resolvers: IResolvers = {
@@ -6,7 +6,7 @@ const resolvers: IResolvers = {
         hello(): string {
             return 'Hello world!!';
         },
-        helloWithName(_: void, args: any): string {
+        helloWithName(_: void, args): string {
             return `Hello ${args.name}!!`;
         },
         helloToGraphQLCourse (): string {

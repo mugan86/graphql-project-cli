@@ -20,9 +20,6 @@
     "url": "https://github.com/<%= githubUser %>/<%= projectName %>/issues"
   },
   "homepage": "https://github.com/<%= githubUser %>/<%= projectName %>#readme",
-  "engines": {
-    "node": "<%= nodeVersion %>"
-  },
   "dependencies": {
     "apollo-server-express": "^2.6.1",
     "compression": "^1.7.4",

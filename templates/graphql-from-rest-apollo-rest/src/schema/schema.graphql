@@ -1,0 +1,240 @@
+type Query {
+  "Lista de las temporadas de Formula 1. De 1950 a 2019 lo seleccionamos"
+  seasonsList: [Season!]!
+  """ 
+  Obtenemos la información de las carreras seleccionadas por año.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a 2019.
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  racesByYear(year: String!): [Race!]!
+  """
+  Carrera seleccionada por año y por número de carrera.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a 2019.
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  raceSelect(year: String!, round: Int!): Race
+  """
+  Lista de los pilotos de la F1 de toda la historia.
+  Tenemos dos opciones:
+  Obtener todos los pilotos
+  Obtener los pilotos haciendo uso de la paginación y podemos limitar el número de resultados
+  Tener en cuenta que solo existen las temporadas desde la 1950 a 2019.
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  historyDrivers(pageElements: Int, page: Int): [Driver!]!
+  """ 
+  Obtenemos la información de los pilotos seleccionados por año.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a 2019.
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  driversYear(year: String!): [Driver!]!
+  """ 
+  Obtenemos la información de los pilotos seleccionados por año y número de carrera.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a 2019.
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  driversYearAndRound(year: String!, round: Int!): [Driver!]!
+  """
+  Obtenemos la información del piloto mediante el valor 'id'
+  Este valor lo obtenemos del tipo de objeto 'Driver' en la propiedad 'id'
+  donde lo pasamos para obtener los detalles de ese piloto seleccionado.
+  Si introducimos con el 'id' 'alonso', obtendremos la información del piloto
+  Fernando Alonso
+  """
+  driverSelect(id: String!): Driver
+  """
+  Clasificación final de los pilotos de una temporada.
+  Tener en cuenta que solo existen las temporadas desde la 1950 a 2019.
+  En el caso de que introduzcamos un valor que no corresponde a ese
+  rango de años, se asignará el año actual. Por ejemplo, si nos encontramos
+  en el año 2019, el año quese asignará será el 2019 en el caso de que no
+  añadamos el año correctamente
+  """
+  seasonPilotsRanking(year: String!): [DriverStanding!]!
+  """
+  Lista de los circuitos de la F1 de toda la historia.
+  Tenemos dos opciones:
+  Obtener todos los circuitos
+  Obtener los circuitos haciendo uso de la paginación y podemos limitar el número de resultados
+  """
+  historyCircuits(pageElements: Int, page: Int): [Circuit!]!,
+  "Circuito seleccionado mediante el id del piloto. Si no encuentra nada, nos devuelve null"
+  circuitSelect(id: String!): Circuit
+}
+"Información de la temporada"
+type Season {
+  "Año de la temporada"
+  year: String!
+  """
+  Información de wikipedia. Obtendremos una URL de este estilo:
+  https://en.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  url: String!
+  """
+  Información de wikipedia adaptada a los dispositivos móviles.
+  Obtendremos una URL de este estilo:
+  https://en.m.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  urlMobile: String!
+}
+"Información de la carrera"
+type Race {
+  "Temporada de esa carrera"
+  season: String!
+  "Número de carrera"
+  round: String!
+  """
+  Información de wikipedia. Obtendremos una URL de este estilo:
+  https://en.wikipedia.org/wiki/2012_Australian_Grand_Prix
+  """
+  url: String!
+  """
+  Información de wikipedia adaptada a los dispositivos móviles.
+  Obtendremos una URL de este estilo:
+  https://en.m.wikipedia.org/wiki/2012_Australian_Grand_Prix
+  """
+  urlMobile: String!
+  """
+  Nombre del Gran Premio al que corresponde esa carrera.
+  Por ejemplo: Gran Premio Australiano
+  """
+  name: String!
+  """
+  Información del circuito con sus propiedades
+  * Nombre
+  * Url del circuito
+  * Localización
+  * ...
+  """
+  circuit: Circuit!
+  "Fecha en la que se celebra este gran Premio"
+  date: String!
+  "Hora en la que se celebra"
+  time: String
+}
+"Información correspondiente al circuito"
+type Circuit {
+  """
+  Identificador único del circuito que usaremos para cuando queramos obtener la
+  información de un circuito mediante la API
+  """
+  id: String!
+  """
+  Información de wikipedia. Obtendremos una URL de este estilo:
+  https://en.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  url: String!
+  """
+  Información de wikipedia adaptada a los dispositivos móviles.
+  Obtendremos una URL de este estilo:
+  https://en.m.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  urlMobile: String!
+  "Nombre del circuito"
+  name: String!
+  """
+  Localización del circuito con estas propiedades:
+  * Coordenadas geográficas : latitud / longitud
+  * Localidad
+  * País
+  """
+  location: Location!
+}
+"Localización del circuito"
+type Location {
+  "Coordenada geográfica - latitud"
+  lat: String!
+  "Coordenada geográfica - longitud"
+  lng: String!
+  "Nombre de la localización"
+  locality: String!
+  "País de la localización"
+  country: String!
+}
+"Información del piloto que participa en carreras de F1"
+type Driver {
+  """
+  Identificador único del piloto que usaremos para cuando queramos obtener la
+  información de un piloto mediante la API
+  """
+  id: String!
+  """
+  Información de wikipedia. Obtendremos una URL de este estilo:
+  https://en.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  url: String!
+  """
+  Información de wikipedia adaptada a los dispositivos móviles.
+  Obtendremos una URL de este estilo:
+  https://en.m.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  urlMobile: String!
+  "Nombre y apellidos del piloto"
+  name: String!
+  "Fecha de nacimiento del piloto"
+  dateOfBirth: String!
+  "Nacionalidad del piloto"
+  nationality: String!
+  "Código único del piloto"
+  code: String
+  """
+  Número permanente del piloto. Normalmente no está 
+  este valor asignado a muchos pilotos
+  """
+  permanentNumber: String
+}
+
+"Estadísticas de los pilotos en las carreras / temporadas"
+type DriverStanding {
+  "Posición que ocupa"
+  position: String!
+  "Posición que ocupa"
+  positionText: String!
+  "Puntos acumulados en la carrera / temporada"
+  points: String!
+  "Victorias conseguidas en carreras"
+  wins: String!
+  "Información del piloto"
+  driver: Driver!
+  "Equipo al que pertenece el piloto"
+  constructors: [Constructor!]!
+}
+
+"Información del equipo de Formula 1"
+type Constructor {
+  """
+  Identificador único del constructor que usaremos para cuando queramos obtener la
+  información de un constructor mediante la API
+  """
+  id: String!
+  """
+  Información de wikipedia. Obtendremos una URL de este estilo:
+  https://en.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  url: String!
+  """
+  Información de wikipedia adaptada a los dispositivos móviles.
+  Obtendremos una URL de este estilo:
+  https://en.m.wikipedia.org/wiki/1950_Formula_One_season
+  """
+  urlMobile: String!
+  "Nombre del equipo"
+  name: String!
+  "Nacionalidad del equipo"
+  nationality: String!
+}

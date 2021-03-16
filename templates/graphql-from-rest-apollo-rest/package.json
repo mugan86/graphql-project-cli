@@ -20,9 +20,6 @@
     "url": "https://github.com/mugan86/rest-to-api-graphql/issues"
   },
   "homepage": "https://github.com/mugan86/rest-to-api-graphql#readme",
-  "engines": {
-    "node": "10.16.0"
-  },
   "dependencies": {
     "apollo-datasource-rest": "^0.6.0",
     "apollo-server": "^2.7.0",
@@ -46,6 +43,9 @@
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",
     "@types/graphql": "^14.2.0",
-    "@types/node": "^12.0.4"
+    "@types/node": "^12.0.4",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript-tslint-plugin": "0.5.5"
   }
 }

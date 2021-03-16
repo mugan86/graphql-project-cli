@@ -12,7 +12,7 @@ async function init() {
     const app = express();
 
     // Añadimos configuración de Cors y compression
-    app.use('*', cors());
+    app.use(cors());
 
     app.use(compression());
 

@@ -2,6 +2,9 @@
 
 Este generador servirá para crear proyectos de GraphQL con diferentes variantes con el objetivo de agilizar el proceso de crear el proyecto sin tener que hacer todos los pasos iniciales una y otra vez.
 
+Si algo de lo que habéis visto créeis que os ha sido útil y me queréis apoyar, podéis invitarme a un café:
+<br><br><a href="https://www.buymeacoffee.com/mugan86"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=mugan86&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"></a>
+
 # Requirements
 * Node >= 10.15.3
 * NPM >= 6.0.0

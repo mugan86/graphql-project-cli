@@ -1,7 +1,7 @@
 {
   "name": "@mugan86/graphql-projects-cli",
-  "version": "1.4.0",
-  "description": "Different GraphQL Projects CLI Generator",
+  "version": "1.4.1",
+  "description": "Different GraphQL Projects CLI Generator - 2020",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
